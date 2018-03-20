@@ -5,6 +5,72 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articles={
+    'article-one':{
+        title:'Article one | Viruthika',
+        heading:'Article one',
+        date:'Mar 21,2018',
+        content:
+        `<p>
+            This is content of my first page 
+        </p>`
+    },
+'article-two':{
+        title:'Article two | Viruthika',
+        heading:'Article two',
+        date:'Mar 21,2018',
+        content:
+        `<p>
+            This is content of my second page 
+        </p>`
+    },
+'article-three':{
+        title:'Article three | Viruthika',
+        heading:'Article three',
+        date:'Mar 21,2018',
+        content:
+        `<p>
+            This is content of my third page 
+        </p>`
+    }
+};
+
+function createTemplate(data){
+    var title=data.title;
+    var date=data.date;
+    var heading=data.heading;
+    var content=data.content;
+    
+    var htmlTemplate=`
+    <html>
+        <head>
+            <title>
+                ${title}
+            </title>
+            <meta name="viewpart" content="width=device-width,initial-scale=1"/>
+            <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div class="container">
+                <div>
+                    <a href="/">Home</a>
+                </div>
+                    <hr/>
+                    <h3>
+                        ${heading}
+                    </h3>
+                <div>
+                    ${date}
+                </div>
+                <div>
+                    ${content}
+            </div>
+    </body>
+</html>
+`;
+return htmlTemplate;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
