@@ -6,6 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var Pool=require('pg').Pool;
+
 var congif = {
     user:'bviruthika',
     database:'bviruthika',
