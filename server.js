@@ -16,7 +16,7 @@ var config = {
 };
 
 
-
+/*
 var articles={
     'article-one':{
         title:'Article one | Viruthika',
@@ -82,7 +82,7 @@ function createTemplate(data){
 `;
 return htmlTemplate;
 }
-
+*/
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
