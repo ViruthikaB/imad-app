@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
-/*var Pool=require('pg').Pool;
+var Pool=require('pg').Pool;
 var congif={
     user:'bviruthika',
     database:'bviruthika',
@@ -10,7 +10,7 @@ var congif={
     port:'5432',
     password:process.env.DB_PASSWORD
 };
-*/
+
 var app = express();
 app.use(morgan('combined'));
 
@@ -85,7 +85,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-/*var pool=new Pool(config);
+var pool=new Pool(config);
 app.get('/test-db',function(req,res){
     pool.query('SELECT * from test',function(err,result){
         if(err){
