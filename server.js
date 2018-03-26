@@ -15,38 +15,6 @@ var config = {
     password:process.env.DB_PASSWORD
 };
 
-
-
-var articles={
-    'article-one':{
-        title:'Article one | Viruthika',
-        heading:'Article one',
-        date:'Mar 21,2018',
-        content:
-        `<p>
-            This is content of my first page. 
-        </p>`
-    },
-'article-two':{
-        title:'Article two | Viruthika',
-        heading:'Article two',
-        date:'Mar 21,2018',
-        content:
-        `<p>
-            This is content of my second page 
-        </p>`
-    },
-'article-three':{
-        title:'Article three | Viruthika',
-        heading:'Article three',
-        date:'Mar 21,2018',
-        content:
-        `<p>
-            This is content of my third page 
-        </p>`
-    }
-};
-
 function createTemplate(data){
     var title=data.title;
     var date=data.date;
