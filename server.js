@@ -7,7 +7,7 @@ app.use(morgan('combined'));
 
 var Pool=require('pg').Pool;
 
-var congif = {
+var config = {
     user:'bviruthika',
     database:'bviruthika',
     host:'db.imad.hasura-app.io',
