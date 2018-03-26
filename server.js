@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var Pool=require('pg').Pool;
-var congif={
+var congif = {
     user:'bviruthika',
     database:'bviruthika',
     host:'db.imad.hasura-app.io',
