@@ -122,6 +122,14 @@ app.post('/login',function(req,res){
 
 });
 
+app.get('/check-login',function(req,res){
+    if(req.session && req.session.auth && req.session.auth.userId){
+        res.send('You are logged in: '+req.session.userId.toString());
+    }
+    else{
+        res.send('You are not logged in');
+    }
+})
 var pool=new Pool(config);
 app.get('/test-db',function(req,res){
     pool.query('SELECT * from test',function(err,result){
