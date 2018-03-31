@@ -7,6 +7,7 @@ app.use(morgan('combined'));
 
 var Pool=require('pg').Pool;
 var crypto = require('crypto');
+var bodyParser=require('body-parser');
 
 var config = {
     user:'bviruthika',
@@ -16,6 +17,7 @@ var config = {
     password:process.env.DB_PASSWORD
 };
 
+app.use(bodyParser.json());
 function createTemplate(data){
     var title=data.title;
     var date=data.date;
@@ -66,6 +68,21 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 });
 
+app.post('/create-user',function(reeq,res){
+    var username=req.body.username;
+    var password=req.body.password;
+    var salt=crypto.getRandomBytes(128).toString('hex');
+    var dbString=hash(password,salt);
+    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
+        if(err)
+        {
+            res.send(500).send(err.toString());
+        }
+        else{
+            res.send('User successfully created: '+username);
+        }
+    });
+});
 var pool=new Pool(config);
 app.get('/test-db',function(req,res){
     pool.query('SELECT * from test',function(err,result){
